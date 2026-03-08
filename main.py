@@ -58,9 +58,9 @@ HTML_PAGE = """<!DOCTYPE html>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --acc:#00e6d2;
-  --acc2:#00bfad;
-  --bg:#040d0f;
+  --acc:#f5c842;
+  --acc2:#e8b830;
+  --bg:#09080a;
   --s1:color-mix(in srgb,var(--bg) 60%,#111);
   --s2:color-mix(in srgb,var(--bg) 40%,#1a1a1a);
   --s3:color-mix(in srgb,var(--bg) 20%,#222);
@@ -1036,3 +1036,8 @@ def history():
 @app.get("/api/health")
 def health():
     return {"status": "ok", "app": "Code Reviewer", "ai_ready": bool(GROQ_API_KEY)}
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.getenv("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
